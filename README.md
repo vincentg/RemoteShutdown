@@ -8,4 +8,4 @@ Setup:
 
 
 How to call remotely:
-curl -H 'XAPIKEY:<APIKEYIN User Secrets>' https://<address>:<port>/shutdown
+```curl -H 'XAPIKEY:<APIKEYIN User Secrets>' https://<address>:<port>/shutdown```
