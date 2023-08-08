@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shutdownApi", "RemoteShutdown\shutdownApi.csproj", "{13C86CAF-5FE9-48B8-89E0-EF3A185D5834}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteShutdown.Tests", "RemoteShutdown.Tests\RemoteShutdown.Tests.csproj", "{BD299960-EC98-4F70-925A-1AB019AD1E6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13C86CAF-5FE9-48B8-89E0-EF3A185D5834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13C86CAF-5FE9-48B8-89E0-EF3A185D5834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13C86CAF-5FE9-48B8-89E0-EF3A185D5834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13C86CAF-5FE9-48B8-89E0-EF3A185D5834}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD299960-EC98-4F70-925A-1AB019AD1E6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD299960-EC98-4F70-925A-1AB019AD1E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD299960-EC98-4F70-925A-1AB019AD1E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD299960-EC98-4F70-925A-1AB019AD1E6D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9D9A983-2C95-4649-A78A-CC8D3A24B7D0}
+	EndGlobalSection
+EndGlobal
