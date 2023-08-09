@@ -10,7 +10,7 @@ namespace shutdownApi.Services
                 new ProcessStartInfo
                 {
                     FileName = "/bin/sudo",
-                    ArgumentList = { "halt" }
+                    ArgumentList = { "-n", "halt" }
                 });
         }
 
@@ -20,7 +20,7 @@ namespace shutdownApi.Services
             new ProcessStartInfo
             {
                 FileName = "/bin/sudo",
-                ArgumentList = { "poweroff" }
+                ArgumentList = { "-n", "poweroff" }
             });
         }
     }
