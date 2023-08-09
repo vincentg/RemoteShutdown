@@ -25,26 +25,10 @@ public class ShutdownController : ControllerBase
         _apiKey = config["ApiKey"];
     }
 
-    [HttpGet(Name = "GetHalt")]
-    public IActionResult GetHalt([FromHeader] string? xApiKey)
+    [HttpGet(Name = "GetShutdown")]
+    public IActionResult GetShutdown([FromHeader] string? xApiKey, [FromQuery] string? type)
     {
-        _logger.LogInformation("GetHalt Called");
-        void haltAction() { _shutdownService.Halt(); }
-
-        return ExecuteCommand(xApiKey, haltAction);
-    }
-
-    [HttpGet(Name = "GetPowerOff")]
-    public IActionResult GetPowerOff([FromHeader] string? xApiKey)
-    {
-        _logger.LogInformation("GetPowerOff Called");
-        void powerOffAction() { _shutdownService.PowerOff(); }
-
-        return ExecuteCommand(xApiKey, powerOffAction);
-    }
-
-    private IActionResult ExecuteCommand(string? xApiKey, Action shutdownAction)
-    {
+        _logger.LogInformation($"GetHalt Called type={type}");
         if (_apiKey is null)
         {
             _logger.LogInformation("No API Key configured, do nothing");
@@ -59,10 +43,14 @@ public class ShutdownController : ControllerBase
         new Thread(() =>
         {
             Thread.Sleep(2000);
-            shutdownAction();
+            if (type == "halt")
+                _shutdownService.Halt();
+            else // Default is PowerOff
+                _shutdownService.PowerOff();
         }).Start();
-           
+
         return Accepted();
+
     }
 
 }

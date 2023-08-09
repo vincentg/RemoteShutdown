@@ -42,11 +42,8 @@ namespace shutdownApi.Controllers.Tests
             var shutdownController = new ShutdownController(configuration, logger,
                 new DummyShutdownImpl());
             // Test wrong key
-            var result = shutdownController.GetHalt("TEST").GetType();
-            var result2 = shutdownController.GetPowerOff("TEST").GetType();
-
+            var result = shutdownController.GetShutdown("TEST", null).GetType();
             Assert.Equal(result, new BadRequestResult().GetType());
-            Assert.Equal(result2, new BadRequestResult().GetType());
         }
 
         [Fact()]
@@ -57,10 +54,8 @@ namespace shutdownApi.Controllers.Tests
             var shutdownController = new ShutdownController(empty_configuration, logger,
                 new DummyShutdownImpl());
 
-            var result = shutdownController.GetHalt("TEST").GetType();
-            var result2 = shutdownController.GetPowerOff("TEST").GetType();
+            var result = shutdownController.GetShutdown("TEST", null).GetType();
             Assert.Equal(result, new NoContentResult().GetType());
-            Assert.Equal(result2, new NoContentResult().GetType());
 
         }
 
@@ -74,7 +69,7 @@ namespace shutdownApi.Controllers.Tests
                                             .Build();
             DummyShutdownImpl shutdownService = new DummyShutdownImpl();
             var shutdownController = new ShutdownController(configuration, logger, shutdownService);
-            var result = shutdownController.GetHalt("SuperSecretAPIKEYMock").GetType();
+            var result = shutdownController.GetShutdown("SuperSecretAPIKEYMock","halt").GetType();
             Assert.Equal(result, new AcceptedResult().GetType());
             // Execution is delayed
             Assert.Equal(0, shutdownService.powerOffCount);
@@ -95,15 +90,13 @@ namespace shutdownApi.Controllers.Tests
                                             .Build();
             DummyShutdownImpl shutdownService = new DummyShutdownImpl();
             var shutdownController = new ShutdownController(configuration, logger, shutdownService);
-            var result = shutdownController.GetPowerOff("SuperSecretAPIKEYMock").GetType();
+            var result = shutdownController.GetShutdown("SuperSecretAPIKEYMock","whatever").GetType();
             Assert.Equal(result, new AcceptedResult().GetType());
             Assert.Equal(0, shutdownService.powerOffCount);
             Assert.Equal(0, shutdownService.haltCount);
             Thread.Sleep(3000);
             Assert.Equal(1, shutdownService.powerOffCount);
             Assert.Equal(0, shutdownService.haltCount);
-
-
         }
     }
 }
